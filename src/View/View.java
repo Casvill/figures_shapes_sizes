@@ -1,6 +1,9 @@
 package View;
+/**
+ *
+ * @author Daniel Casvill
+ */
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,84 +12,92 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Daniel Casvill
- */
+
 public class View extends JFrame 
 {
+    //Variable declaration:
     private int initialX;
     private int initialY;
-    private ViewBackground vBackground;
+    private ViewBackground vBackground;    
+    private JButton jbQuit;
+    private JPanel panel;
     
-    private final JButton jbQuit;
-    
+    //Constructor:------------------------------------------------------------------------------------
     public View() 
-    {
+    {   
+        setSize(1123, 693);
+        setLayout(null);
+        initComponents();
         this.setUndecorated(true);
         this.setLocationRelativeTo(null);
+    }
+    //------------------------------------------------------------------------------------------------
+    private void initComponents()
+    {
+        //Variable initialization:-------------------------------------------
+        panel = new JPanel();
         vBackground = new ViewBackground("/Images/ViewLogging.png");
         jbQuit = new JButton("Quit Game");
+        //--------------------------------------------------------------------
         
         
-        jbQuit.addActionListener((ActionEvent evt) -> {
-            cerrarVentana();
-        });
-        addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
+        //Listeners:---------------------------------------------------------
+        jbQuit.addActionListener((ActionEvent evt) -> 
+        {
+            //System.exit(0);
+            closeWindow();
+        });               
+        
+        addMouseListener(new MouseAdapter() 
+        {
+            @Override
+            public void mousePressed(MouseEvent e) 
+            {
                 initialX = e.getX();
                 initialY = e.getY();
             }
         });
-        addMouseMotionListener(new MouseAdapter() {
+        
+        addMouseMotionListener(new MouseAdapter() 
+        {
+            @Override
             public void mouseDragged(MouseEvent e) {
                 int newX = getLocation().x + e.getX() - initialX;
                 int newY = getLocation().y + e.getY() - initialY;
                 setLocation(newX, newY);
+                getContentPane().revalidate();   
             }
         });
+        //--------------------------------------------------------------------
         
         
+        // Components coordinates:-------------------------------------------
+        jbQuit.setBounds(975,20,100,33);
+        vBackground.setBounds(0,0,1123,693);
+        //--------------------------------------------------------------------
         
         
-        JPanel panel = new JPanel();
-        panel.setBounds(975,20,100,33);
-        panel.add(jbQuit);
-        getContentPane().add(panel);
-        //JPanel panelBotones = new JPanel();
-        //panelBotones.add(jbQuit);
-        //getContentPane().add(panelBotones, BorderLayout.SOUTH);
-
-            
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1123, 693); // Tamaño predeterminado
+        // Add components to the main panel:----------------------------------
+        getContentPane().add(panel);            
+        add(jbQuit);
         add(vBackground);
+        //--------------------------------------------------------------------        
     }
     
     //------------------------------------------------------------------------------------------------
     
-    public void cerrarVentana(){
-        int respuesta;
+    public void closeWindow(){
+        int answer;
 
-        respuesta = JOptionPane.showConfirmDialog(
-                    null,"¿Realmente dese abandonar el juego?", "Advertencia",
+        answer = JOptionPane.showConfirmDialog(
+                    null,"Do you really want to close the game?", "Warning",
                     JOptionPane.YES_NO_OPTION, 
                     JOptionPane.WARNING_MESSAGE);
-        if(respuesta == JOptionPane.YES_OPTION)
+        if(answer == JOptionPane.YES_OPTION)
         {
             System.exit(0);
         }
     }
     
     //------------------------------------------------------------------------------------------------
-    public static void main(String args[]) {
-        // Crea una instancia de ViewLogin y hazla visible
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
-    }
-    
 }
