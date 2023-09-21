@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import View.View;
+import View.ViewLobby;
 import java.awt.Font;
 
 
@@ -44,8 +45,9 @@ public class ViewLogging extends View
         
         // Action Listeners:--------------------------------------------------
         jbGo.addActionListener((ActionEvent evt) -> {
-            String nickname = jtfNickname.getText();
+            nickname = jtfNickname.getText();
             System.out.println(nickname);
+            go();
         });
         //--------------------------------------------------------------------
         
@@ -54,7 +56,7 @@ public class ViewLogging extends View
         jlNickname.setBounds(500, 260, 200, 30);
         jlNickname.setFont(font);
         jtfNickname.setBounds(480, 300, 150, 30);
-        jbGo.setBounds(460, 340, 200, 30);
+        jbGo.setBounds(452, 340, 200, 30);
         //--------------------------------------------------------------------
         
         
@@ -73,6 +75,18 @@ public class ViewLogging extends View
         
         
         getContentPane().revalidate();        
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    
+    private void go()
+    {
+        new ViewLobby().setVisible(true);
+        //remove(jlNickname);
+        //remove(jtfNickname);
+        //remove(jbGo);
+        //getContentPane().revalidate();  
+        dispose();
     }
     
     

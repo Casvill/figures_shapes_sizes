@@ -21,6 +21,7 @@ public class View extends JFrame
     private ViewBackground vBackground;    
     private JButton jbQuit;
     private JPanel panel;
+    public static String nickname;
     
     //Constructor:------------------------------------------------------------------------------------
     public View() 
