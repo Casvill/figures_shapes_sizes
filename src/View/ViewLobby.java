@@ -46,6 +46,7 @@ public class ViewLobby extends View{
         
         jbStart.addActionListener((ActionEvent evt) -> {            
             // Instructions logic
+            start();
         });
         //--------------------------------------------------------------------
         
@@ -71,6 +72,12 @@ public class ViewLobby extends View{
         
         
         getContentPane().revalidate();  
+    }
+    
+    private void start()
+    {
+        new ViewGame().setVisible(true);
+        dispose();
     }
     
 }

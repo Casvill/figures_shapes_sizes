@@ -82,10 +82,6 @@ public class ViewLogging extends View
     private void go()
     {
         new ViewLobby().setVisible(true);
-        //remove(jlNickname);
-        //remove(jtfNickname);
-        //remove(jbGo);
-        //getContentPane().revalidate();  
         dispose();
     }
     

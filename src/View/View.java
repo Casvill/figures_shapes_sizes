@@ -18,7 +18,7 @@ public class View extends JFrame
     //Variable declaration:
     private int initialX;
     private int initialY;
-    private ViewBackground vBackground;    
+    public ViewBackground vBackground;    
     private JButton jbQuit;
     private JPanel panel;
     public static String nickname;
