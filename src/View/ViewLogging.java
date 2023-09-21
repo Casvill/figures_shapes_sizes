@@ -67,7 +67,7 @@ public class ViewLogging extends View
         //--------------------------------------------------------------------
         
         
-        // Configuation or the order of the components (at the bottom, on top, etc)
+        // Configuation of the order of the components (at the bottom, on top, etc)
         getContentPane().setComponentZOrder(jlNickname,0);
         getContentPane().setComponentZOrder(jtfNickname,0);
         getContentPane().setComponentZOrder(jbGo,0);

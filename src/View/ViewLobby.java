@@ -64,7 +64,7 @@ public class ViewLobby extends View{
         add(jbStart);
         //--------------------------------------------------------------------
         
-        // Configuation or the order of the components (at the bottom, on top, etc)
+        // Configuation of the order of the components (at the bottom, on top, etc)
         getContentPane().setComponentZOrder(jlMessage,0);
         getContentPane().setComponentZOrder(jbInstructions,0);
         getContentPane().setComponentZOrder(jbStart,0);
