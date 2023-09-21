@@ -10,18 +10,18 @@ import javax.swing.JPanel;
  * @author Admin
  */
 class ViewBackground extends JPanel{
-    ImageIcon imagen;
-    String nombre;
+    ImageIcon image;
+    String name;
     
     public ViewBackground(String nombre){
-        this.nombre = nombre;
+        this.name = nombre;
     }
     
     @Override
     public void paint(Graphics g){
-        Dimension tamano = getSize();
-        imagen = new ImageIcon(getClass().getResource(nombre));
-        g.drawImage(imagen.getImage(), 0, 0, null);
+        Dimension size = getSize();
+        image = new ImageIcon(getClass().getResource(name));
+        g.drawImage(image.getImage(), 0, 0, null);
         setOpaque(false);
         super.paint(g);
     }
