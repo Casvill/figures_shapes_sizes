@@ -1,8 +1,6 @@
 package View;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,23 +13,13 @@ import javax.swing.JPanel;
  */
 public class View extends JFrame 
 {
+    private ViewBackground vBackground;
     
     private final JButton jbQuit;
     
     public View() 
     {
-        // Configurar el fondo (puedes personalizar la lógica de fondo aquí)
-        setContentPane(new JPanel() 
-        {
-            @Override
-            protected void paintComponent(Graphics g) 
-            {
-                super.paintComponent(g);
-                // Dibuja el fondo aquí
-                g.setColor(Color.BLACK);
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-        });
+        vBackground = new ViewBackground("/Images/ViewLogging.png");
         
         
         jbQuit = new JButton("Quit Game");
@@ -48,12 +36,13 @@ public class View extends JFrame
         getContentPane().add(panelBotones, BorderLayout.SOUTH);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600); // Tamaño predeterminado
+        setSize(1123, 693); // Tamaño predeterminado
+        add(vBackground);
     }
     
     //------------------------------------------------------------------------------------------------
     
-    private void cerrarVentana(){
+    public void cerrarVentana(){
         int respuesta;
 
         respuesta = JOptionPane.showConfirmDialog(
@@ -67,12 +56,6 @@ public class View extends JFrame
     }
     
     //------------------------------------------------------------------------------------------------
-    
-    public static void main(String args[]) {
-        // Crea una instancia de ViewLogin y hazla visible
-        java.awt.EventQueue.invokeLater(() -> {
-            new View().setVisible(true);
-        });
-    }
+
     
 }

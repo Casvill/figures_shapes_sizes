@@ -1,13 +1,10 @@
 package view;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import View.View;
 
 
 /**
@@ -17,18 +14,17 @@ import javax.swing.JTextField;
 
 //----------------------------------------------------------------------------------------------------
 
-public class ViewLogin extends javax.swing.JFrame 
+public class ViewLoggin extends View
 { 
     //Variable declaration:
     private JLabel jlNickname;
     private JTextField jtfNickname;
     private JButton jbGo;
-    private JButton jbQuit;
     
     //------------------------------------------------------------------------------------------------
     
     //Constructor:
-    public ViewLogin() 
+    public ViewLoggin() 
     {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -43,7 +39,6 @@ public class ViewLogin extends javax.swing.JFrame
         jlNickname = new JLabel("Nickname: ");
         jtfNickname = new JTextField(20);
         jbGo = new JButton("Go!");
-        jbQuit = new JButton("Quit Game");
         
         
         
@@ -55,11 +50,7 @@ public class ViewLogin extends javax.swing.JFrame
             // Realiza alguna acción con el nombre de usuario
         });
 
-        // Configura el ActionListener para el botón "Quit Game"
-        jbQuit.addActionListener((ActionEvent evt) -> {
-            // Aquí puedes agregar la lógica para salir del juego si es necesario
-            cerrarVentana();
-        });
+
 
         
         // Configura el diseño de la ventana
@@ -67,26 +58,10 @@ public class ViewLogin extends javax.swing.JFrame
         add(jlNickname);
         add(jtfNickname);
         add(jbGo);
-        add(jbQuit);
 
-        pack(); // Ajusta el tamaño de la ventana automáticamente
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //pack(); // Ajusta el tamaño de la ventana automáticamente
     }
     
-    //------------------------------------------------------------------------------------------------
-    
-    private void cerrarVentana(){
-        int respuesta;
-
-        respuesta = JOptionPane.showConfirmDialog(
-                    null,"¿Realmente dese abandonar el juego?", "Advertencia",
-                    JOptionPane.YES_NO_OPTION, 
-                    JOptionPane.WARNING_MESSAGE);
-        if(respuesta == JOptionPane.YES_OPTION)
-        {
-            System.exit(0);
-        }
-    }
     
     //------------------------------------------------------------------------------------------------
     
@@ -95,7 +70,7 @@ public class ViewLogin extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ViewLogin().setVisible(true);
+                new ViewLoggin().setVisible(true);
             }
         });
     }
