@@ -28,6 +28,8 @@ public class ViewLobby extends View{
         initComponents();
     }
     
+    //------------------------------------------------------------------------------------------------
+    
     public void initComponents()
     {
         //Variable initialization:-------------------------------------------
@@ -42,10 +44,11 @@ public class ViewLobby extends View{
         // Action Listeners:--------------------------------------------------
         jbInstructions.addActionListener((ActionEvent evt) -> {            
             // Instructions logic
+            instructions();
         });
         
         jbStart.addActionListener((ActionEvent evt) -> {            
-            // Instructions logic
+            // Start logic
             start();
         });
         //--------------------------------------------------------------------
@@ -74,10 +77,24 @@ public class ViewLobby extends View{
         getContentPane().revalidate();  
     }
     
+    //------------------------------------------------------------------------------------------------
+    
     private void start()
     {
         new ViewGame().setVisible(true);
         dispose();
     }
     
+    //------------------------------------------------------------------------------------------------
+    
+    
+    //------------------------------------------------------------------------------------------------
+    
+    private void instructions()
+    {
+        new ViewInstructions().setVisible(true);
+        dispose();
+    }
+    
+    //------------------------------------------------------------------------------------------------
 }

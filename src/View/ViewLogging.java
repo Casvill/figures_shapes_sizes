@@ -27,6 +27,7 @@ public class ViewLogging extends View
     public ViewLogging() 
     {
         initComponents();
+        setVisible(true);
     }
     
     //------------------------------------------------------------------------------------------------
@@ -84,7 +85,7 @@ public class ViewLogging extends View
     
     
     //------------------------------------------------------------------------------------------------
-    
+    /*
     public static void main(String args[]) 
     {
         java.awt.EventQueue.invokeLater(() -> 
@@ -92,7 +93,7 @@ public class ViewLogging extends View
             new ViewLogging().setVisible(true);
         });
     }
-    
+    */
     //------------------------------------------------------------------------------------------------
     
 }
