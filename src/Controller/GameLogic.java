@@ -14,13 +14,15 @@ import java.util.Collections;
 
 public class GameLogic 
 {
-    //private final String url = "src/Images/Figures/";
+    private final String url;
+    private static int tries = 0;
+    private static int fails = 0;
 
     //--------------------------------------------------------------------------------------------
     
     public GameLogic() 
     {
-
+         url = "src/Images/Figures";
     }
     
     //--------------------------------------------------------------------------------------------
@@ -72,6 +74,7 @@ public class GameLogic
         // Return the list of file names
         return fileNames;
     }
+    
     //--------------------------------------------------------------------------------------------
     
     public List<String> getFigures(String url)
@@ -86,16 +89,54 @@ public class GameLogic
         
         return figures;
     }
+    
+    //--------------------------------------------------------------------------------------------
+    
+    public List<String> getFigures()
+    {
+        List<String> figures;
+        String figure;
+        
+        figure = getElementRandomly(listFilesInFolder(url));
+        figure = getElementRandomly(listFilesInFolder(figure));
+        figures = listFilesInFolder(figure);
+        Collections.shuffle(figures);
+        
+        return figures;
+    }
+    
+    //--------------------------------------------------------------------------------------------
+    public static int getTries() {
+        return tries;
+    }
 
     //--------------------------------------------------------------------------------------------
     
+    public static void setTries(int tries) {
+        GameLogic.tries = tries;
+    }
+
+    //--------------------------------------------------------------------------------------------
+    
+    public static int getFails() {
+        return fails;
+    }
+
+    //--------------------------------------------------------------------------------------------
+    
+    public static void setFails(int fails) {
+        GameLogic.fails = fails;
+    }
+
+    //--------------------------------------------------------------------------------------------
+    /*
     public static void main(String args[]) 
     {
         String url = "src/Images/Figures";
         GameLogic gl = new GameLogic();
         System.out.println("Figures:"+gl.getFigures(url));
     }
-    
+    */
     //--------------------------------------------------------------------------------------------
 }
 //------------------------------------------------------------------------------------------------

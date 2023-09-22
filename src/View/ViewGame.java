@@ -1,6 +1,11 @@
 package View;
 
 import javax.swing.JLabel;
+import Controller.GameLogic;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -16,9 +21,17 @@ public class ViewGame extends View
     private ViewBackground sPanel; //Second
     private ViewBackground tPanel; //Third
 
-    private String figureUrl;
+    private List<String> figures;
         
     private JLabel jlNickname;
+    private JLabel jlFails;
+    private JLabel jlTries;
+    
+    private GameLogic gl;
+    private String figureGoal;
+    private String fFigure;
+    private String sFigure;
+    private String tFigure;
     
     //------------------------------------------------------------------------------------------------
     
@@ -33,15 +46,31 @@ public class ViewGame extends View
     private void initComponents()
     {
         //Variable initialization:-------------------------------------------
+        gl = new GameLogic();
+        figures = gl.getFigures();
+        
+        figureGoal = figures.get(0).substring(3);
+        leftPanel = new ViewBackground(figureGoal);
+
+        Collections.shuffle(figures);
+
+        fFigure = figures.get(0).substring(3);
+        sFigure = figures.get(1).substring(3);
+        tFigure = figures.get(2).substring(3);
+
+        fPanel = new ViewBackground(fFigure);
+        sPanel = new ViewBackground(sFigure);
+        tPanel = new ViewBackground(tFigure);
+        
         vBackground.setName("/Images/ViewGame.png");
         
-        leftPanel = new ViewBackground("/Images/Figures/Triangles/Blue/tbBlue.png");
-        fPanel = new ViewBackground("/Images/Figures/Triangles/Blue/tsBlue.png");
-        sPanel = new ViewBackground("/Images/Figures/Triangles/Blue/tbBlue.png");
-        tPanel = new ViewBackground("/Images/Figures/Triangles/Blue/tmBlue.png");
         
         jlNickname = new JLabel("Player: " + nickname);
         jlNickname.setFont(font);
+        jlFails = new JLabel("Fails: " + GameLogic.getFails());
+        jlFails.setFont(font);
+        jlTries = new JLabel("Tries: " + GameLogic.getTries());
+        jlTries.setFont(font);
         //--------------------------------------------------------------------
         
         
@@ -52,6 +81,8 @@ public class ViewGame extends View
         tPanel.setBounds(900,265,180,180);
         
         jlNickname.setBounds(30,20,230,33);
+        jlFails.setBounds(375,20,230,33);
+        jlTries.setBounds(625,20,230,33);
         //--------------------------------------------------------------------
         
         
@@ -62,6 +93,8 @@ public class ViewGame extends View
         add(tPanel);
         
         add(jlNickname);
+        add(jlFails);
+        add(jlTries);
         //--------------------------------------------------------------------
         
         
@@ -72,18 +105,110 @@ public class ViewGame extends View
         getContentPane().setComponentZOrder(tPanel,0);
         
         getContentPane().setComponentZOrder(jlNickname,0);
+        getContentPane().setComponentZOrder(jlFails,0);
+        getContentPane().setComponentZOrder(jlTries,0);
         //--------------------------------------------------------------------
         
+        // Action Listeners:--------------------------------------------------
+        fPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("FF:"+fFigure);
+                System.out.println("FG:"+figureGoal);
+                if(fFigure.equals(figureGoal))
+                {
+                    System.out.println("Congrats!");                    
+                    round();
+                }
+                else
+                {
+                    System.out.println("Jumm");
+                    fail();
+                }
+            }
+        });
         
+        sPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("SF:"+sFigure);
+                System.out.println("FG:"+figureGoal);
+                if(sFigure.equals(figureGoal))
+                {
+                    System.out.println("Congrats!");
+                    round();
+                }
+                else
+                {
+                    System.out.println("Jumm");
+                    fail();
+                }
+            }
+        });
+        
+        tPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("TF:"+tFigure);
+                System.out.println("FG:"+figureGoal);
+                if(tFigure.equals(figureGoal))
+                {
+                    System.out.println("Congrats!");
+                    round();
+                }
+                else
+                {
+                    System.out.println("Jumm");
+                    fail();
+                }
+            }
+        });
+        //--------------------------------------------------------------------                        
         
         getContentPane().revalidate();          
     }
+    
     //------------------------------------------------------------------------------------------------    
     
-    public void setFigureUrl(String figureUrl) 
+    private void round()
     {
-        this.figureUrl = figureUrl;
+        GameLogic.setTries(GameLogic.getTries()+1);
+        jlTries.setText("Tries: "+GameLogic.getTries());
+        
+        figures = gl.getFigures();
+        
+        figureGoal = figures.get(0).substring(3);
+        leftPanel.setName(figureGoal);
+
+        Collections.shuffle(figures);
+
+        fFigure = figures.get(0).substring(3);
+        sFigure = figures.get(1).substring(3);
+        tFigure = figures.get(2).substring(3);
+
+        fPanel.setName(fFigure);
+        sPanel.setName(sFigure);
+        tPanel.setName(tFigure);
+        
+        leftPanel.repaint();
+        fPanel.repaint();
+        sPanel.repaint();
+        tPanel.repaint();
+        
+        getContentPane().revalidate();    
     }
-    //------------------------------------------------------------------------------------------------ 
+    
+    //------------------------------------------------------------------------------------------------
+    
+    private void fail()
+    {
+        GameLogic.setFails(GameLogic.getFails()+1);
+        GameLogic.setTries(GameLogic.getTries()+1);
+        
+        jlFails.setText("Fails: "+GameLogic.getFails());
+        jlTries.setText("Tries: "+GameLogic.getTries());
+    }
+    
+    //------------------------------------------------------------------------------------------------
 }
 //------------------------------------------------------------------------------------------------------
