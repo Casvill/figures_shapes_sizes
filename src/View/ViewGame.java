@@ -1,19 +1,24 @@
 package View;
 
-import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Daniel Casvill
  */
 
-public class ViewGame extends View{
+public class ViewGame extends View
+{
     
     //Variable declaration:
     private ViewBackground leftPanel;
     private ViewBackground fPanel; //First
     private ViewBackground sPanel; //Second
     private ViewBackground tPanel; //Third
+
+    private String figureUrl;
+        
+    private JLabel jlNickname;
     
     //------------------------------------------------------------------------------------------------
     
@@ -34,6 +39,9 @@ public class ViewGame extends View{
         fPanel = new ViewBackground("/Images/Figures/Triangles/Blue/tsBlue.png");
         sPanel = new ViewBackground("/Images/Figures/Triangles/Blue/tbBlue.png");
         tPanel = new ViewBackground("/Images/Figures/Triangles/Blue/tmBlue.png");
+        
+        jlNickname = new JLabel("Player: " + nickname);
+        jlNickname.setFont(font);
         //--------------------------------------------------------------------
         
         
@@ -42,6 +50,8 @@ public class ViewGame extends View{
         fPanel.setBounds(350,265,180,180);
         sPanel.setBounds(620,265,180,180);
         tPanel.setBounds(900,265,180,180);
+        
+        jlNickname.setBounds(30,20,230,33);
         //--------------------------------------------------------------------
         
         
@@ -50,6 +60,8 @@ public class ViewGame extends View{
         add(fPanel);
         add(sPanel);
         add(tPanel);
+        
+        add(jlNickname);
         //--------------------------------------------------------------------
         
         
@@ -58,6 +70,8 @@ public class ViewGame extends View{
         getContentPane().setComponentZOrder(fPanel,0);
         getContentPane().setComponentZOrder(sPanel,0);
         getContentPane().setComponentZOrder(tPanel,0);
+        
+        getContentPane().setComponentZOrder(jlNickname,0);
         //--------------------------------------------------------------------
         
         
@@ -65,5 +79,11 @@ public class ViewGame extends View{
         getContentPane().revalidate();          
     }
     //------------------------------------------------------------------------------------------------    
+    
+    public void setFigureUrl(String figureUrl) 
+    {
+        this.figureUrl = figureUrl;
+    }
+    //------------------------------------------------------------------------------------------------ 
 }
 //------------------------------------------------------------------------------------------------------

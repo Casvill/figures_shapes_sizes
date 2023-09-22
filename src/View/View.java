@@ -4,6 +4,7 @@ package View;
  * @author Daniel Casvill
  */
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,10 +19,17 @@ public class View extends JFrame
     //Variable declaration:
     private int initialX;
     private int initialY;
+    
     public ViewBackground vBackground;    
+    
     private JButton jbQuit;
+    
     private JPanel panel;
+    
     public static String nickname;
+    
+    public static Font font;
+    
     
     //Constructor:------------------------------------------------------------------------------------
     public View() 
@@ -39,6 +47,7 @@ public class View extends JFrame
         panel = new JPanel();
         vBackground = new ViewBackground("/Images/ViewLogging.png");
         jbQuit = new JButton("Quit Game");
+        font = new Font("Arial",Font.PLAIN, 28);
         //--------------------------------------------------------------------
         
         

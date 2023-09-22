@@ -5,7 +5,7 @@ package View;
  */
 
 import static View.View.nickname;
-import java.awt.Font;
+import static View.View.font;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,7 +18,7 @@ public class ViewLobby extends View{
     private JLabel jlMessage;
     private JButton jbInstructions;
     private JButton jbStart;
-    private Font font;
+    //private Font font;
         
     //------------------------------------------------------------------------------------------------
     
@@ -32,7 +32,7 @@ public class ViewLobby extends View{
     {
         //Variable initialization:-------------------------------------------
         jlMessage = new JLabel("Welcome "+nickname+" !!");
-        font = new Font("Arial",Font.PLAIN, 28);
+        //font = new Font("Arial",Font.PLAIN, 28);
         jlMessage.setFont(font);
         jbInstructions = new JButton("Instructions");
         jbStart = new JButton("Start");

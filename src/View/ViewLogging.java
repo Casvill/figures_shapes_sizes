@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import View.View;
 import View.ViewLobby;
-import java.awt.Font;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -21,7 +20,6 @@ public class ViewLogging extends View
     private JLabel jlNickname;
     private JTextField jtfNickname;
     private JButton jbGo;
-    private Font font;
         
     //------------------------------------------------------------------------------------------------
     
@@ -37,8 +35,8 @@ public class ViewLogging extends View
     {   
         //Variable initialization:-------------------------------------------
         jlNickname = new JLabel("Nickname: ");
-        font = new Font("Arial",Font.PLAIN, 24);
         jtfNickname = new JTextField(20);
+                jlNickname.setFont(font);
         jbGo = new JButton("Go!");
         //--------------------------------------------------------------------
         
@@ -54,7 +52,6 @@ public class ViewLogging extends View
         
          // Components coordinates:-------------------------------------------
         jlNickname.setBounds(500, 260, 200, 30);
-        jlNickname.setFont(font);
         jtfNickname.setBounds(480, 300, 150, 30);
         jbGo.setBounds(452, 340, 200, 30);
         //--------------------------------------------------------------------
