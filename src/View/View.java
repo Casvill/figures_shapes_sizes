@@ -4,6 +4,7 @@ package View;
  * @author Daniel Casvill
  */
 
+import Controller.GameLogic;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -30,8 +31,10 @@ public class View extends JFrame
     
     public static Font font;
     
+    private static boolean inGame; // Check if player is in Game View or not.    
     
     //Constructor:------------------------------------------------------------------------------------
+    
     public View() 
     {   
         setSize(1123, 693);
@@ -40,7 +43,9 @@ public class View extends JFrame
         this.setUndecorated(true);
         this.setLocationRelativeTo(null);
     }
-    //------------------------------------------------------------------------------------------------
+    
+    //-------------------------------------------------------------------------------------------------
+    
     private void initComponents()
     {
         //Variable initialization:-------------------------------------------
@@ -48,6 +53,8 @@ public class View extends JFrame
         vBackground = new ViewBackground("/Images/ViewLogging.png");
         jbQuit = new JButton("Quit Game");
         font = new Font("Arial",Font.PLAIN, 28);
+        
+        inGame = false;
         //--------------------------------------------------------------------
         
         
@@ -99,14 +106,35 @@ public class View extends JFrame
     public void closeWindow(){
         int answer;
 
-        answer = JOptionPane.showConfirmDialog(
+        answer = JOptionPane.showConfirmDialog
+        (
                     null,"Do you really want to close the game?", "Warning",
                     JOptionPane.YES_NO_OPTION, 
-                    JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.WARNING_MESSAGE
+        );
+        
         if(answer == JOptionPane.YES_OPTION)
         {
+            if(inGame)
+            {                
+                dispose();
+                JOptionPane.showMessageDialog(null,
+                "GAME STATISTICS\n\n" + 
+                "Total Tries : " + GameLogic.getTries() +
+                "\nTotal Fails: " +  GameLogic.getFails(), 
+                "Hasta la vista Baby!!!",
+                JOptionPane.INFORMATION_MESSAGE);                    
+            }
+            
             System.exit(0);
         }
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    
+    public static void setInGame(boolean inGame) 
+    {
+        View.inGame = inGame;
     }
     
     //------------------------------------------------------------------------------------------------

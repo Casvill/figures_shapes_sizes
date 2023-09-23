@@ -37,15 +37,15 @@ public class ViewLogging extends View
         //Variable initialization:-------------------------------------------
         jlNickname = new JLabel("Nickname: ");
         jtfNickname = new JTextField(20);
-                jlNickname.setFont(font);
+        jlNickname.setFont(font);
         jbGo = new JButton("Go!");
         //--------------------------------------------------------------------
         
         
         // Action Listeners:--------------------------------------------------
-        jbGo.addActionListener((ActionEvent evt) -> {
+        jbGo.addActionListener((ActionEvent evt) -> 
+        {
             nickname = jtfNickname.getText();
-            System.out.println(nickname);
             go();
         });
         //--------------------------------------------------------------------
@@ -79,21 +79,10 @@ public class ViewLogging extends View
     
     private void go()
     {
-        new ViewLobby().setVisible(true);
         dispose();
+        new ViewLobby().setVisible(true);        
     }
     
-    
-    //------------------------------------------------------------------------------------------------
-    /*
-    public static void main(String args[]) 
-    {
-        java.awt.EventQueue.invokeLater(() -> 
-        {
-            new ViewLogging().setVisible(true);
-        });
-    }
-    */
     //------------------------------------------------------------------------------------------------
     
 }

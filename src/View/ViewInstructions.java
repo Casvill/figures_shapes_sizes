@@ -1,20 +1,19 @@
 package View;
-
-import java.awt.event.ActionEvent;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
 /**
  *
  * @author Daniel Casvill
  */
 
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+
 public class ViewInstructions extends View
 {
-    private JLabel jltInstructions;
-    private JButton jbPlay;
-    private JButton jbBack;
+    private final JLabel jltInstructions;
+    private final JButton jbPlay;
+    private final JButton jbBack;
     
     //------------------------------------------------------------------------------------------------
     
@@ -30,12 +29,14 @@ public class ViewInstructions extends View
         
         
         // Action Listeners:--------------------------------------------------
-        jbPlay.addActionListener((ActionEvent evt) -> {            
+        jbPlay.addActionListener((ActionEvent evt) -> 
+        {            
             // Play logic
             play();
         });
         
-        jbBack.addActionListener((ActionEvent evt) -> {            
+        jbBack.addActionListener((ActionEvent evt) -> 
+        {            
             // Back logic
             back();
         });
@@ -69,16 +70,16 @@ public class ViewInstructions extends View
     
     private void play()
     {
-        new ViewGame().setVisible(true);
         dispose();
+        new ViewGame().setVisible(true);
     }
     
     //------------------------------------------------------------------------------------------------
     
     private void back()
     {
-        new ViewLobby().setVisible(true);
         dispose();
+        new ViewLobby().setVisible(true);
     }
     
     //------------------------------------------------------------------------------------------------

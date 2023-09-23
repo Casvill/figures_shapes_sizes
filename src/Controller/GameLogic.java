@@ -14,7 +14,7 @@ import java.util.Collections;
 
 public class GameLogic 
 {
-    private final String url;
+    private final String url; //Path where figure images are located
     private static int tries = 0;
     private static int fails = 0;
 
@@ -45,7 +45,6 @@ public class GameLogic
     {
         // Specify the path of the folder you want to list
         String folder = url;
-        //System.out.println("Folder: " + url);
 
         // Create a File object to represent the folder
         File directory = new File(folder);
@@ -77,35 +76,36 @@ public class GameLogic
     
     //--------------------------------------------------------------------------------------------
     
-    public List<String> getFigures(String url)
+    public List<String> getFigures(String url) // The path of the figures must be provided
     {
         List<String> figures;
         String figure;
         
-        figure = getElementRandomly(listFilesInFolder(url));
-        figure = getElementRandomly(listFilesInFolder(figure));
-        figures = listFilesInFolder(figure);
-        Collections.shuffle(figures);
+        figure = getElementRandomly(listFilesInFolder(url)); //Choose a figure randomly
+        figure = getElementRandomly(listFilesInFolder(figure)); // Choose a color randomly
+        figures = listFilesInFolder(figure); // Get the chosen figure with its color
+        Collections.shuffle(figures); // Shuffle the elements
         
         return figures;
     }
     
     //--------------------------------------------------------------------------------------------
     
-    public List<String> getFigures()
+    public List<String> getFigures() // The same as the previous method but using the url of the class
     {
         List<String> figures;
         String figure;
         
-        figure = getElementRandomly(listFilesInFolder(url));
-        figure = getElementRandomly(listFilesInFolder(figure));
-        figures = listFilesInFolder(figure);
-        Collections.shuffle(figures);
+        figure = getElementRandomly(listFilesInFolder(url)); //Choose a figure randomly
+        figure = getElementRandomly(listFilesInFolder(figure)); // Choose a color randomly
+        figures = listFilesInFolder(figure); // Get the chosen figure with its color
+        Collections.shuffle(figures); // Shuffle the elements
         
         return figures;
     }
     
     //--------------------------------------------------------------------------------------------
+    
     public static int getTries() {
         return tries;
     }
@@ -128,15 +128,6 @@ public class GameLogic
         GameLogic.fails = fails;
     }
 
-    //--------------------------------------------------------------------------------------------
-    /*
-    public static void main(String args[]) 
-    {
-        String url = "src/Images/Figures";
-        GameLogic gl = new GameLogic();
-        System.out.println("Figures:"+gl.getFigures(url));
-    }
-    */
     //--------------------------------------------------------------------------------------------
 }
 //------------------------------------------------------------------------------------------------

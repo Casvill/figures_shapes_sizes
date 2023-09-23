@@ -38,7 +38,8 @@ public class ViewGame extends View
     //Constructor:
     public ViewGame() 
     {
-        initComponents();                
+        initComponents();   
+        View.setInGame(true); //Already in game view
     }
     
     //------------------------------------------------------------------------------------------------
@@ -46,6 +47,7 @@ public class ViewGame extends View
     private void initComponents()
     {
         //Variable initialization:-------------------------------------------
+        
         gl = new GameLogic();
         figures = gl.getFigures();
         
@@ -110,57 +112,30 @@ public class ViewGame extends View
         //--------------------------------------------------------------------
         
         // Action Listeners:--------------------------------------------------
-        fPanel.addMouseListener(new MouseAdapter() {
+        fPanel.addMouseListener(new MouseAdapter() 
+        {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("FF:"+fFigure);
-                System.out.println("FG:"+figureGoal);
-                if(fFigure.equals(figureGoal))
-                {
-                    System.out.println("Congrats!");                    
-                    round();
-                }
-                else
-                {
-                    System.out.println("Jumm");
-                    fail();
-                }
+            public void mouseClicked(MouseEvent e) 
+            {                
+                compareFigure(fFigure);
             }
         });
         
-        sPanel.addMouseListener(new MouseAdapter() {
+        sPanel.addMouseListener(new MouseAdapter() 
+        {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("SF:"+sFigure);
-                System.out.println("FG:"+figureGoal);
-                if(sFigure.equals(figureGoal))
-                {
-                    System.out.println("Congrats!");
-                    round();
-                }
-                else
-                {
-                    System.out.println("Jumm");
-                    fail();
-                }
+            public void mouseClicked(MouseEvent e) 
+            {
+                compareFigure(sFigure);
             }
         });
         
-        tPanel.addMouseListener(new MouseAdapter() {
+        tPanel.addMouseListener(new MouseAdapter() 
+        {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("TF:"+tFigure);
-                System.out.println("FG:"+figureGoal);
-                if(tFigure.equals(figureGoal))
-                {
-                    System.out.println("Congrats!");
-                    round();
-                }
-                else
-                {
-                    System.out.println("Jumm");
-                    fail();
-                }
+            public void mouseClicked(MouseEvent e) 
+            {
+                compareFigure(tFigure);
             }
         });
         //--------------------------------------------------------------------                        
@@ -207,6 +182,20 @@ public class ViewGame extends View
         
         jlFails.setText("Fails: "+GameLogic.getFails());
         jlTries.setText("Tries: "+GameLogic.getTries());
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    
+    private void compareFigure(String figureSelected)
+    {
+        if(figureSelected.equals(figureGoal))
+        {
+            round();
+        }
+        else
+        {
+            fail();
+        }
     }
     
     //------------------------------------------------------------------------------------------------

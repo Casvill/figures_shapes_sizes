@@ -12,13 +12,13 @@ import javax.swing.JLabel;
 
 //----------------------------------------------------------------------------------------------------
 
-public class ViewLobby extends View{
+public class ViewLobby extends View
+{
     
     //Variable declaration:
     private JLabel jlMessage;
     private JButton jbInstructions;
     private JButton jbStart;
-    //private Font font;
         
     //------------------------------------------------------------------------------------------------
     
@@ -34,7 +34,6 @@ public class ViewLobby extends View{
     {
         //Variable initialization:-------------------------------------------
         jlMessage = new JLabel("Welcome "+nickname+" !!");
-        //font = new Font("Arial",Font.PLAIN, 28);
         jlMessage.setFont(font);
         jbInstructions = new JButton("Instructions");
         jbStart = new JButton("Start");
@@ -42,12 +41,14 @@ public class ViewLobby extends View{
         
         
         // Action Listeners:--------------------------------------------------
-        jbInstructions.addActionListener((ActionEvent evt) -> {            
+        jbInstructions.addActionListener((ActionEvent evt) -> 
+        {            
             // Instructions logic
             instructions();
         });
         
-        jbStart.addActionListener((ActionEvent evt) -> {            
+        jbStart.addActionListener((ActionEvent evt) -> 
+        {            
             // Start logic
             start();
         });
