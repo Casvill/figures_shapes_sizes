@@ -1,4 +1,8 @@
 package View;
+/**
+ *
+ * @author Daniel Casvill
+ */
 
 import javax.swing.JLabel;
 import Controller.GameLogic;
@@ -7,10 +11,6 @@ import java.awt.event.MouseEvent;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- * @author Daniel Casvill
- */
 
 public class ViewGame extends View
 {

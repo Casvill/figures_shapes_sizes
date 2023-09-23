@@ -30,7 +30,7 @@ public class ViewLobby extends View
     
     //------------------------------------------------------------------------------------------------
     
-    public void initComponents()
+    private void initComponents()
     {
         //Variable initialization:-------------------------------------------
         jlMessage = new JLabel("Welcome "+nickname+" !!");
