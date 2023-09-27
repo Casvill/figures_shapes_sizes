@@ -119,9 +119,13 @@ public class View extends JFrame
             {                
                 dispose();
                 JOptionPane.showMessageDialog(null,
-                "GAME STATISTICS\n\n" + 
-                "Total Tries : " + GameLogic.getTries() +
-                "\nTotal Fails: " +  GameLogic.getFails(), 
+                """
+                GAME STATISTICS                
+                Total Rounds : """ + GameLogic.getRounds() +                
+                "\nTotal Fails: " +  GameLogic.getFails()+ 
+                "  (%"+ (GameLogic.getFails() * 100)/GameLogic.getTries()+")" +
+                "\nTotal hits : " + (GameLogic.getRounds()-1)+
+                "  (%"+ ((GameLogic.getRounds()-1) * 100)/GameLogic.getTries()+")",
                 "Hasta la vista Baby!!!",
                 JOptionPane.INFORMATION_MESSAGE);                    
             }

@@ -17,7 +17,8 @@ public class GameLogic
     private final String url; //Path where figure images are located
     private static int tries = 0;
     private static int fails = 0;
-
+    private static int rounds = 1;
+    
     //--------------------------------------------------------------------------------------------
     
     public GameLogic() 
@@ -128,6 +129,19 @@ public class GameLogic
         GameLogic.fails = fails;
     }
 
+    //--------------------------------------------------------------------------------------------
+    
+    
+    public static void setRound(int rounds) {
+        GameLogic.rounds = rounds;
+    }
+
+    //--------------------------------------------------------------------------------------------
+
+    public static int getRounds() {
+        return rounds;
+    }
+    
     //--------------------------------------------------------------------------------------------
 }
 //------------------------------------------------------------------------------------------------

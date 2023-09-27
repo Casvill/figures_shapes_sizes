@@ -26,6 +26,7 @@ public class ViewGame extends View
     private JLabel jlNickname;
     private JLabel jlFails;
     private JLabel jlTries;
+    private JLabel jlRounds;
     
     private GameLogic gl;
     private String figureGoal;
@@ -73,6 +74,8 @@ public class ViewGame extends View
         jlFails.setFont(font);
         jlTries = new JLabel("Tries: " + GameLogic.getTries());
         jlTries.setFont(font);
+        jlRounds = new JLabel("Round: " + GameLogic.getRounds());
+        jlRounds.setFont(font);
         //--------------------------------------------------------------------
         
         
@@ -83,8 +86,9 @@ public class ViewGame extends View
         tPanel.setBounds(900,265,180,180);
         
         jlNickname.setBounds(30,20,230,33);
-        jlFails.setBounds(375,20,230,33);
-        jlTries.setBounds(625,20,230,33);
+        jlFails.setBounds(340,20,230,33);
+        jlTries.setBounds(565,20,230,33);
+        jlRounds.setBounds(805,20,230,33);
         //--------------------------------------------------------------------
         
         
@@ -97,6 +101,7 @@ public class ViewGame extends View
         add(jlNickname);
         add(jlFails);
         add(jlTries);
+        add(jlRounds);
         //--------------------------------------------------------------------
         
         
@@ -109,6 +114,7 @@ public class ViewGame extends View
         getContentPane().setComponentZOrder(jlNickname,0);
         getContentPane().setComponentZOrder(jlFails,0);
         getContentPane().setComponentZOrder(jlTries,0);
+        getContentPane().setComponentZOrder(jlRounds,0);
         //--------------------------------------------------------------------
         
         // Action Listeners:--------------------------------------------------
@@ -149,6 +155,9 @@ public class ViewGame extends View
     {
         GameLogic.setTries(GameLogic.getTries()+1);
         jlTries.setText("Tries: "+GameLogic.getTries());
+        
+        GameLogic.setRound(GameLogic.getRounds()+1);
+        jlRounds.setText("Round: "+GameLogic.getRounds());
         
         figures = gl.getFigures();
         
