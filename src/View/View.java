@@ -118,16 +118,32 @@ public class View extends JFrame
             if(inGame)
             {                
                 dispose();
-                JOptionPane.showMessageDialog(null,
-                """
-                GAME STATISTICS                
-                Total Rounds : """ + GameLogic.getRounds() +                
-                "\nTotal Fails: " +  GameLogic.getFails()+ 
-                "  (%"+ (GameLogic.getFails() * 100)/GameLogic.getTries()+")" +
-                "\nTotal hits : " + (GameLogic.getRounds()-1)+
-                "  (%"+ ((GameLogic.getRounds()-1) * 100)/GameLogic.getTries()+")",
-                "Hasta la vista Baby!!!",
-                JOptionPane.INFORMATION_MESSAGE);                    
+                
+                if(GameLogic.getTries() > 0)
+                {
+                    JOptionPane.showMessageDialog(null,
+                    """
+                    GAME STATISTICS                
+                    Total Rounds : """ + GameLogic.getRounds() +                
+                    "\nTotal Fails: " +  GameLogic.getFails()+ 
+                    "  (%"+ (GameLogic.getFails() * 100)/GameLogic.getTries()+")" +
+                    "\nTotal hits : " + (GameLogic.getRounds()-1)+
+                    "  (%"+ ((GameLogic.getRounds()-1) * 100)/GameLogic.getTries()+")",
+                    "Hasta la vista Baby!!!",
+                    JOptionPane.INFORMATION_MESSAGE);   
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,
+                    """
+                    GAME STATISTICS                
+                    Total Rounds : """ + GameLogic.getRounds() +                
+                    "\nTotal Fails: " +  GameLogic.getFails()+ 
+                    "\nTotal hits : " + (GameLogic.getRounds()-1),
+                    "Hasta la vista Baby!!!",
+                    JOptionPane.INFORMATION_MESSAGE);  
+                }
+                                 
             }
             
             System.exit(0);
