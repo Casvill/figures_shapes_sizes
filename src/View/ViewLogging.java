@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import View.View;
 import View.ViewLobby;
+import javax.swing.JOptionPane;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -79,8 +80,24 @@ public class ViewLogging extends View
     
     private void go()
     {
-        dispose();
-        new ViewLobby().setVisible(true);        
+        if(verifyNickname())
+        {
+            dispose();
+            new ViewLobby().setVisible(true); 
+        }    
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    
+    private boolean verifyNickname()
+    {
+        if(jtfNickname.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Please enter a Nickname","warning",JOptionPane.ERROR_MESSAGE);
+            jtfNickname.requestFocusInWindow();
+            return false;
+        }   
+        return true;
     }
     
     //------------------------------------------------------------------------------------------------
