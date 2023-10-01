@@ -47,8 +47,8 @@ public class ViewInstructions extends View
         
         
         // Components coordinates:-------------------------------------------
-        jltInstructions.setBounds(240, 240, 620, 30);
-        jltInstructions2.setBounds(240, 280, 620, 30);
+        jltInstructions.setBounds(247, 240, 620, 30);
+        jltInstructions2.setBounds(256, 280, 620, 30);
         jbPlay.setBounds(480, 400, 150, 30);
         jbBack.setBounds(480, 440, 150, 30);
         //--------------------------------------------------------------------

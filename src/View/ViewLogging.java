@@ -54,8 +54,8 @@ public class ViewLogging extends View
         
          // Components coordinates:-------------------------------------------
         jlNickname.setBounds(500, 260, 200, 30);
-        jtfNickname.setBounds(480, 300, 150, 30);
-        jbGo.setBounds(452, 340, 200, 30);
+        jtfNickname.setBounds(488, 300, 150, 30);
+        jbGo.setBounds(459, 340, 200, 30);
         //--------------------------------------------------------------------
         
         
