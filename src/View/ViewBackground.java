@@ -1,13 +1,16 @@
 package View;
+/**
+ *
+ * @author Daniel Castillo Villamarín
+ * @FPOE group 81
+ * @Lab number 1
+ */
 
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Admin
- */
+
 class ViewBackground extends JPanel{
     ImageIcon image;
     String name;

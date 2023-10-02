@@ -1,7 +1,9 @@
 package view;
 /**
  *
- * @author Daniel Casvill
+ * @author Daniel Castillo Villamarín
+ * @FPOE group 81
+ * @Lab number 1
  */
 
 import java.awt.event.ActionEvent;
