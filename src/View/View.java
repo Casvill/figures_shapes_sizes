@@ -119,19 +119,25 @@ public class View extends JFrame
             {                
                 dispose();
                 
-                if(GameLogic.getTries() > 0)
+                if (GameLogic.getTries() > 0) 
                 {
-                    JOptionPane.showMessageDialog(null,
-                    """
-                    GAME STATISTICS                
-                    Total Rounds : """ + GameLogic.getRounds() +                
-                    "\nTotal Fails: " +  GameLogic.getFails()+ 
-                    "  (%"+ (GameLogic.getFails() * 100)/GameLogic.getTries()+")" +
-                    "\nTotal hits : " + (GameLogic.getRounds()-1)+
-                    "  (%"+ ((GameLogic.getRounds()-1) * 100)/GameLogic.getTries()+")",
-                    "Hasta la vista Baby!!!",
-                    JOptionPane.INFORMATION_MESSAGE);   
+                    int totalRounds = GameLogic.getRounds();
+                    int totalFails = GameLogic.getFails();
+                    int totalHits = totalRounds - 1;
+
+                    double failPercentage = (totalFails * 100.0) / GameLogic.getTries();
+                    double hitPercentage = (totalHits * 100.0) / GameLogic.getTries();
+
+                    String message = String.format("""
+                            GAME STATISTICS                
+                            Total Rounds : %d
+                            Total Fails  : %d  (%.2f%%)
+                            Total Hits   : %d  (%.2f%%)""",
+                            totalRounds, totalFails, failPercentage, totalHits, hitPercentage);
+
+                    JOptionPane.showMessageDialog(null, message, "Hasta la vista Baby!!!", JOptionPane.INFORMATION_MESSAGE);
                 }
+
                 else
                 {
                     JOptionPane.showMessageDialog(null,
